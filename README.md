@@ -1,7 +1,7 @@
-![turf](https://raw.githubusercontent.com/Turfjs/turf/9a1d5e8d99564d4080f1e2bf1517ed41d18012fa/logo.png)
+![turf](https://raw.githubusercontent.com/Turfjs/turf/9a1d5e8d99564d4080f1e2bf1517ed41d18012fa/logo.png) 
 ======
 
-[![Build Status](https://travis-ci.org/Turfjs/turf.svg?branch=master)](https://travis-ci.org/Turfjs/turf)
+ <sup>[![Version Badge](http://vb.teelaun.ch/Turfjs/turf.svg)](https://npmjs.org/package/turf)</sup> [![Build Status](https://travis-ci.org/Turfjs/turf.svg?branch=master)](https://travis-ci.org/Turfjs/turf) [![Gitter chat](https://badges.gitter.im/Turfjs/turf.png)](https://gitter.im/Turfjs/turf)
 
 
 ***A modular geospatial engine written in JavaScript***
@@ -9,6 +9,8 @@
 [turfjs.org](http://turfjs.org/)
 
 - - -
+
+[Turf](https://turfjs.org) is a [JavaScript library](https://en.wikipedia.org/wiki/JavaScript_library) for [spatial analysis](http://en.wikipedia.org/wiki/Spatial_analysis). It includes traditional spatial operations, helper functions for creating [GeoJSON](http://geojson.org) data, and data classification and statistics tools. Turf can be added to your website as a client-side plugin, or you can [run Turf server-side](https://www.npmjs.com/package/turf) with [Node.js](http://nodejs.org/) (see below).
 
 ##Installation
 
@@ -28,16 +30,42 @@ Download the [minified file](https://raw.github.com/morganherlocker/turf/master/
 
 **Browserify:**
 
-All of Turf's functions can also be installed as seperate modules. This works well with tools like [browserify](http://browserify.org/) where you only want to install only the code you need. It also allows you to mix and match modules as needed. This is the recommended usage pattern for most production environments. For example, to install the *point* and *buffer* modules use:
+All of Turf's functions can also be installed as separate modules. This works well with tools like [browserify](http://browserify.org/) where you want to install only the code you need. It also allows you to mix and match modules. This is the recommended usage pattern for most production environments. For example, to install the *point* and *buffer* modules use:
 
 ```sh
-npm install turf-point
-npm install turf-buffer
+npm install turf-point turf-buffer
 ```
 
 - - -
 
-##Features
+###Data in Turf
+
+Turf uses <a href='http://geojson.org/'>GeoJSON</a> for all geographic data. Turf expects the data to be standard <a href='http://en.wikipedia.org/wiki/World_Geodetic_System'>WGS84</a> longitude, latitude coordinates. Check out <a href='http://geojson.io/#id=gist:anonymous/844f013aae8354eb889c&map=12/38.8955/-77.0135'>geojson.io</a> for a tool to easily create this data.
+
+Most Turf functions work with GeoJSON features. These are are pieces of data that represent a collection of properties (ie: population, elevation, zipcode, etc.) along with a geometry. GeoJSON has several geometry types such as:
+
+* Point
+* LineString
+* Polygon
+
+Turf provides a few geometry functions of its own. These are nothing more than simple (and optional) wrappers that output plain old GeoJSON. For example, these two methods of creating a point are functionally equivalent:
+
+```
+var point1 = turf.point([0, 0]);
+
+var point2 = {
+  type: 'Feature',
+  geometry: {
+    type: 'Point',
+    coordinates: [0, 0]
+  },
+  properties: {}
+};
+```
+
+- - -
+
+##Functions
 
 ####geometry
 
@@ -47,7 +75,7 @@ npm install turf-buffer
 
 [![Build Status](https://travis-ci.org/Turfjs/turf-polygon.svg?branch=master)](https://travis-ci.org/Turfjs/turf-polygon) [polygon](https://github.com/Turfjs/turf-polygon)
 
-[![Build Status](https://travis-ci.org/Turfjs/turf-featureCollection.svg?branch=master)](https://travis-ci.org/Turfjs/turf-featureCollection) [featurecollection](https://github.com/Turfjs/turf-featurecollection)
+[![Build Status](https://travis-ci.org/Turfjs/turf-featurecollection.svg?branch=master)](https://travis-ci.org/Turfjs/turf-featurecollection) [featurecollection](https://github.com/Turfjs/turf-featurecollection)
 
 ####joins
 
@@ -66,6 +94,8 @@ npm install turf-buffer
 
 ####measurement
 [![Build Status](https://travis-ci.org/Turfjs/turf-distance.svg?branch=master)](https://travis-ci.org/Turfjs/turf-distance) [distance](https://github.com/Turfjs/turf-distance)
+
+[![Build Status](https://travis-ci.org/Turfjs/turf-area.svg?branch=master)](https://travis-ci.org/Turfjs/turf-area) [area](https://github.com/Turfjs/turf-area)
 
 [![Build Status](https://travis-ci.org/Turfjs/turf-nearest.svg?branch=master)](https://travis-ci.org/Turfjs/turf-nearest) [nearest](https://github.com/Turfjs/turf-nearest)
 
@@ -91,18 +121,29 @@ npm install turf-buffer
 
 [![Build Status](https://travis-ci.org/Turfjs/turf-destination.svg?branch=master)](https://travis-ci.org/Turfjs/turf-destination) [destination](https://github.com/Turfjs/turf-destination)
 
+[![Build Status](https://travis-ci.org/Turfjs/turf-line-distance.svg?branch=master)](https://travis-ci.org/Turfjs/turf-line-distance) [line-distance](https://github.com/Turfjs/turf-line-distance)
+
+[![Build Status](https://travis-ci.org/Turfjs/turf-along.svg?branch=master)](https://travis-ci.org/Turfjs/turf-along) [along](https://github.com/Turfjs/turf-along)
+
 ####interpolation
+
 [![Build Status](https://travis-ci.org/Turfjs/turf-tin.svg?branch=master)](https://travis-ci.org/Turfjs/turf-tin) [tin](https://github.com/Turfjs/turf-tin)
-
-[![Build Status](https://travis-ci.org/Turfjs/turf-grid.svg?branch=master)](https://travis-ci.org/Turfjs/turf-grid) [grid](https://github.com/Turfjs/turf-grid)
-
-[![Build Status](https://travis-ci.org/Turfjs/turf-hex.svg?branch=master)](https://travis-ci.org/Turfjs/turf-hex) [hex](https://github.com/Turfjs/turf-hex)
 
 [![Build Status](https://travis-ci.org/Turfjs/turf-planepoint.svg?branch=master)](https://travis-ci.org/Turfjs/turf-planepoint) [planepoint](https://github.com/Turfjs/turf-planepoint)
 
 [![Build Status](https://travis-ci.org/Turfjs/turf-isolines.svg?branch=master)](https://travis-ci.org/Turfjs/turf-isolines) [isolines](https://github.com/Turfjs/turf-isolines)
 
 [![Build Status](https://travis-ci.org/Turfjs/turf-isobands.svg?branch=master)](https://travis-ci.org/Turfjs/turf-isobands) [isobands](https://github.com/Turfjs/turf-isobands)
+
+####grids
+
+[![Build Status](https://travis-ci.org/Turfjs/turf-point-grid.svg?branch=master)](https://travis-ci.org/Turfjs/turf-point-grid) [point-grid](https://github.com/Turfjs/turf-point-grid)
+
+[![Build Status](https://travis-ci.org/Turfjs/turf-square-grid.svg?branch=master)](https://travis-ci.org/Turfjs/turf-square-grid) [square-grid](https://github.com/Turfjs/turf-square-grid)
+
+[![Build Status](https://travis-ci.org/Turfjs/turf-hex-grid.svg?branch=master)](https://travis-ci.org/Turfjs/turf-hex-grid) [hex-grid](https://github.com/Turfjs/turf-hex-grid)
+
+[![Build Status](https://travis-ci.org/Turfjs/turf-triangle-grid.svg?branch=master)](https://travis-ci.org/Turfjs/turf-triangle-grid) [triangle-grid](https://github.com/Turfjs/turf-triangle-grid)
 
 ####classification
 [![Build Status](https://travis-ci.org/Turfjs/turf-quantile.svg?branch=master)](https://travis-ci.org/Turfjs/turf-quantile) [quantile](https://github.com/Turfjs/turf-quantile)

@@ -1,7 +1,12 @@
+/**
+ * Turf is a modular GIS engine written in JavaScript. It performs geospatial
+ * processing tasks with GeoJSON data and can be run on a server or in a browser.
+ *
+ * @module turf
+ * @summary GIS For Web Maps
+ */
 module.exports = {
-  isClockwise: require('turf-is-clockwise'),
   isolines: require('turf-isolines'),
-  isobands: require('turf-isobands'),
   merge: require('turf-merge'),
   convex: require('turf-convex'),
   within: require('turf-within'),
@@ -37,7 +42,6 @@ module.exports = {
   bboxPolygon: require('turf-bbox-polygon'),
   featurecollection: require('turf-featurecollection'),
   filter: require('turf-filter'),
-  grid: require('turf-grid'),
   inside: require('turf-inside'),
   intersect: require('turf-intersect'),
   linestring: require('turf-linestring'),
@@ -45,13 +49,22 @@ module.exports = {
   planepoint: require('turf-planepoint'),
   point: require('turf-point'),
   polygon: require('turf-polygon'),
+  random: require('turf-random'),
   reclass: require('turf-reclass'),
   remove: require('turf-remove'),
   tin: require('turf-tin'),
   union: require('turf-union'),
   bearing: require('turf-bearing'),
   destination: require('turf-destination'),
-  hex: require('turf-hex'),
   kinks: require('turf-kinks'),
-  pointOnSurface: require('turf-point-on-surface')
-}
+  pointOnSurface: require('turf-point-on-surface'),
+  area: require('turf-area'),
+  along: require('turf-along'),
+  lineDistance: require('turf-line-distance'),
+  lineSlice: require('turf-line-slice'),
+  pointOnLine: require('turf-point-on-line'),
+  pointGrid: require('turf-point-grid'),
+  squareGrid: require('turf-square-grid'),
+  triangleGrid: require('turf-triangle-grid'),
+  hexGrid: require('turf-hex-grid')
+};
